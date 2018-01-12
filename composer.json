@@ -1,0 +1,14 @@
+{
+    "name": "luke/4-weeks-of-code",
+    "description": "A website that helps coders to commit to coding as frequently as possible.",
+    "type": "project",
+    "require": {
+        "lusitanian/oauth": "^0.8.10"
+    },
+    "authors": [
+        {
+            "name": "Luke Chen Shui",
+            "email": "chenshuiluke@gmail.com"
+        }
+    ]
+}

@@ -1,9 +1,10 @@
 <?php
 namespace App\Controllers;
-class HomeController
+use \App\Views\HomeView;
+class HomeController extends BaseController
 {
     public static function index(){
-        echo "Hello";
+        self::include_view('home');
     }
 }
 ?>

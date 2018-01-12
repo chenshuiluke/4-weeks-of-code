@@ -9,8 +9,10 @@ function autoLoader($class){
     $possibilities['lowercaseWithoutNamespace'] = strtolower($possibilities['withoutNamespace']);
 
     foreach($possibilities as $possibility){
-        include_once "../app/{$possibility}.php";
-        include_once "../app/controllers/{$possibility}.php";        
+        @include_once "../app/{$possibility}.php";
+        @include_once "../app/controllers/{$possibility}.php"; 
+        @include_once "../app/views/{$possibility}.php";   
+        @include_once "../app/util/{$possibility}.php";     
         //var_dump(get_included_files());
     }
 

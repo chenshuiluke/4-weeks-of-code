@@ -11,32 +11,21 @@ use OAuth\Common\Consumer\Credentials;
 class SignupController extends BaseController
 {
     public function showSignupPage(){
-        $uriFactory = new \OAuth\Common\Http\Uri\UriFactory();
-        $currentUri = $uriFactory->createFromSuperGlobalArray($_SERVER);
-        $currentUri->setQuery('');
-
-        $storage = new Session();
-        $servicesCredentials = Config::$servicesCredentials;
-        $credentials = new Credentials(
-            $servicesCredentials['github']['key'],
-            $servicesCredentials['github']['secret'],
-            $currentUri->getAbsoluteUri()
-        );
-        $serviceFactory = new \OAuth\ServiceFactory();
-
-        $gitHub = $serviceFactory->createService('GitHub', $credentials, $storage, array('user'));
+        $github = Config::getGitHubOauthService();
         if (!empty($_GET['code'])) {
             // This was a callback request from github, get the token
             $gitHub->requestAccessToken($_GET['code']);
-            $result = json_decode($gitHub->request('user/emails'), true);
-            echo 'The first email on your github account is ' . $result[0];
-        } elseif (!empty($_GET['go']) && $_GET['go'] === 'go') {
-            $url = $gitHub->getAuthorizationUri();
-            header('Location: ' . $url);
-        } else {
-            $url = $currentUri->getRelativeUri() . '?go=go';
-            echo "<a href='$url'>Login with Github!</a>";
-        }
+            $user = json_decode($gitHub->request('user'), true);
+            // var_dump($user);
+            $email = $user['email'];
+            $name = $user['name'];
+            $username = $user['login'];
+            echo 'The first email on your github account is ' . $email;
+            echo '<br/>';
+            echo 'Your name is ' . $name;
+            echo '<br/>';
+            echo 'Your username is ' . $username;
+        } 
     }
 
     public static function processSignup(){

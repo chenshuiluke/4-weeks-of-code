@@ -34,12 +34,12 @@ class HomeController extends BaseController
             $email = $user['email'];
             $name = $user['name'];
             $username = $user['login'];
-            echo 'The first email on your github account is ' . $email;
-            echo '<br/>';
-            echo 'Your name is ' . $name;
-            echo '<br/>';
-            echo 'Your username is ' . $username;
-            var_dump($username);
+            // echo 'The first email on your github account is ' . $email;
+            // echo '<br/>';
+            // echo 'Your name is ' . $name;
+            // echo '<br/>';
+            // echo 'Your username is ' . $username;
+            // var_dump($username);
             $user = null;
             if(!User::checkIfExists($username)){
                 $user = User::new($username, $email, true);

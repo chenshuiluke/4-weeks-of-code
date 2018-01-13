@@ -1,1 +1,1 @@
-<h1>Home</h1>
+<img id="logo-image" class="img img-fluid" src="assets/img/logo.png">

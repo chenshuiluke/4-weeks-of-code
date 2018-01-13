@@ -1,5 +1,6 @@
 <?php
 namespace App\Util;
+use \Dotenv\Dotenv;
 
 class DatabaseUtilities
 {
@@ -8,11 +9,13 @@ class DatabaseUtilities
         if(isset($instance)){
             return $instance;
         }
+        $dotenv = new Dotenv('..');
+		$dotenv->load();
 
-        $host="localhost";
-        $database="four_weeks";
-        $username="four_weeks_user";
-        $password="password";
+        $host=getenv('DB_HOST');
+        $database=getenv('DB_NAME');
+        $username=getenv('DB_USER');
+        $password=getenv('DB_PASS');
         $charset="utf8mb4";
         $dsn = "mysql:host=$host;dbname=$database;charset=$charset";
 

@@ -7,7 +7,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <?php
-    if(isset($data) && isset($data['github_login_url'])){
+    if(isset($data) && isset($data['github_login_url']) && !isset($_SESSION['user'])){
 ?>
       <li class="nav-item">
       <a class="nav-link" href="<?php echo $data['github_login_url'] ?>">
@@ -17,6 +17,16 @@
       </li>
 
 <?php
+    }
+    if(isset($_SESSION['user'])){
+?>
+      <li class="nav-item">
+        <a class="nav-link" href="/">
+          <?php echo $_SESSION['user']->get('username'); ?>
+        </a>
+      </li>
+<?php
+      
     }
 ?>
 

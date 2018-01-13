@@ -12,7 +12,8 @@ function autoLoader($class){
         @include_once "../app/{$possibility}.php";
         @include_once "../app/controllers/{$possibility}.php"; 
         @include_once "../app/views/{$possibility}.php";   
-        @include_once "../app/util/{$possibility}.php";     
+        @include_once "../app/util/{$possibility}.php"; 
+        @include_once "../app/models/{$possibility}.php";         
         //var_dump(get_included_files());
     }
 

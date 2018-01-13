@@ -7,6 +7,9 @@ use App\Controllers\BaseController;
 use App\Router;
 use App\Config;
 
+ini_set('session.cookie_lifetime', 60 * 60 * 24 * 7);
+session_start();
+
 define('VIEW_PREFIX', '../app/views/');
 define('HTML_ASSET_PREFIX', 'assets/');
 

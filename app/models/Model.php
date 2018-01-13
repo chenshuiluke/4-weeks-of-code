@@ -1,7 +1,19 @@
 <?php
 namespace App\Models;
-interface Model
+
+abstract class Model
 {
-    public static function getTable();
-    public static function getFields();
+    private $fields;
+    public function get($attribute_name){
+        if(array_key_exists($attribute_name, $this->fields)){
+            return $this->fields[$attribute_name];
+        }
+        else{
+            return null;
+        }
+    }
+    public function set($attribute_name, $value){
+        $this->fields[$attribute_name] = $value;
+    }
 }
+?>

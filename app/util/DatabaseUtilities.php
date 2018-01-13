@@ -18,7 +18,6 @@ class DatabaseUtilities
         $password=getenv('DB_PASS');
         $charset="utf8mb4";
         $dsn = "mysql:host=$host;dbname=$database;charset=$charset";
-
         $instance = new \PDO($dsn, $username, $password);
         $instance->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         return $instance;

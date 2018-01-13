@@ -1,11 +1,14 @@
 <?php
 namespace App\Controllers;
+
 use \App\Views\HomeView;
 use App\Util\DatabaseUtilities;
 use App\Config;
+use App\Models\User;
 use OAuth\OAuth2\Service\GitHub;
 use OAuth\Common\Storage\Session;
 use OAuth\Common\Consumer\Credentials;
+
 class HomeController extends BaseController
 {
     public static function index(){
@@ -36,7 +39,20 @@ class HomeController extends BaseController
             echo 'Your name is ' . $name;
             echo '<br/>';
             echo 'Your username is ' . $username;
+            var_dump($username);
+            $user = null;
+            if(!User::checkIfExists($username)){
+                $user = User::new($username, $email, true);
+            }
+            else{
+                $user = User::find($username);
+            }
+
+            if(isset($user)){
+                $_SESSION['user'] = $user;
+            }            
             self::include_view('home');
+            
         } elseif (!empty($_GET['go']) && $_GET['go'] === 'go') {
             $url = $gitHub->getAuthorizationUri();
             header('Location: ' . $url);

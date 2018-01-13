@@ -20,7 +20,7 @@ class User extends Model
         $result = $statement->execute();
         
         $count = (int)$statement->fetch()[0];
-        var_dump($count);
+        //var_dump($count);
         if($count > 0){
             return true;
         }
@@ -37,7 +37,7 @@ class User extends Model
             $statement->bindParam(':username', $username);
             $statement->bindParam(':email', $email);
             $result = $statement->execute();
-            var_dump($result);
+            //var_dump($result);
         }
         if($result || !$save){
             $user = new User();

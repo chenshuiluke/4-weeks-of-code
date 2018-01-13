@@ -20,7 +20,8 @@
     }
     if(isset($_SESSION['user'])){
 ?>
-      <li class="nav-item">
+      <li class="nav-item two-column">
+        <img class="img img-fluid" src="<?php echo $_SESSION['user']->get('avatar') ?>">
         <a class="nav-link" href="/">
           <?php echo $_SESSION['user']->get('username'); ?>
         </a>

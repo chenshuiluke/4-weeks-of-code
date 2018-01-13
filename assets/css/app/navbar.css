@@ -1,0 +1,13 @@
+.two-column {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    align-items: center;
+}
+
+nav img {
+    max-width: 24px !important;
+    max-height: 24px !important;
+    object-fit: cover;
+}

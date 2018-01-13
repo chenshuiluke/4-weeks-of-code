@@ -10,12 +10,12 @@ class User extends Model
     }
 
     public static function getFields(){
-        return ['id', 'email', 'username'];
+        return ['id', 'email', 'username', 'avatar_url'];
     }
 
     public static function checkIfExists($username){
         $pdo = DatabaseUtilities::getPDOInstance();
-        $statement = $pdo->prepare("SELECT COUNT(username) FROM users WHERE username=:username;");
+        $statement = $pdo->prepare("SELECT COUNT(username) FROM user WHERE username=:username;");
         $statement->bindParam(':username', $username);
         $result = $statement->execute();
         
@@ -29,13 +29,14 @@ class User extends Model
         }
     }
 
-    public static function new($username, $email, $save = false){
+    public static function new($username, $email, $avatar, $save = false){
         $result = false;
         if($save){
             $pdo = DatabaseUtilities::getPDOInstance();
-            $statement = $pdo->prepare("INSERT INTO users(username, email) VALUES (:username, :email);");
+            $statement = $pdo->prepare("INSERT INTO user(username, email, avatar_url) VALUES (:username, :email, :avatar);");
             $statement->bindParam(':username', $username);
             $statement->bindParam(':email', $email);
+            $statement->bindParam(':avatar', $avatar);
             $result = $statement->execute();
             //var_dump($result);
         }
@@ -43,6 +44,7 @@ class User extends Model
             $user = new User();
             $user->set('username', $username);
             $user->set('email', $email);
+            $user->set('avatar', $avatar);
             return $user;
         }
         return null;
@@ -50,7 +52,7 @@ class User extends Model
 
     public static function find($username){
         $pdo = DatabaseUtilities::getPDOInstance();
-        $statement = $pdo->prepare("SELECT * FROM users WHERE username=:username");
+        $statement = $pdo->prepare("SELECT * FROM user WHERE username=:username");
 
         $statement->bindParam(':username', $username);
 
@@ -58,7 +60,7 @@ class User extends Model
 
         if($result){
             $user_obj = $statement->fetch(\PDO::FETCH_ASSOC);
-            return self::new($user_obj['username'], $user_obj['email']);
+            return self::new($user_obj['username'], $user_obj['email'], $user_obj['avatar_url']);
         }
         return null;
     }

@@ -34,6 +34,7 @@ class HomeController extends BaseController
             $email = $user['email'];
             $name = $user['name'];
             $username = $user['login'];
+            $avatar = $user['avatar_url'];
             // echo 'The first email on your github account is ' . $email;
             // echo '<br/>';
             // echo 'Your name is ' . $name;
@@ -42,7 +43,7 @@ class HomeController extends BaseController
             // var_dump($username);
             $user = null;
             if(!User::checkIfExists($username)){
-                $user = User::new($username, $email, true);
+                $user = User::new($username, $email, $avatar, true);
             }
             else{
                 $user = User::find($username);

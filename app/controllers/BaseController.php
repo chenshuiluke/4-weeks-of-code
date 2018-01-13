@@ -5,7 +5,8 @@ class BaseController
 {
     private static $views;
     public static function include_view($view, $data = null){
-        require self::$views[$view];
+        $view_file = self::$views[$view];
+        require VIEW_PREFIX . 'base.php';
     }
 
     public static function setViews($views){

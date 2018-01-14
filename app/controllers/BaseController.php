@@ -12,5 +12,23 @@ class BaseController
     public static function setViews($views){
         self::$views = $views;
     }
+
+    protected static function escapeInput($data, $encoding='UTF-8'){
+        return htmlspecialchars($data,ENT_QUOTES | ENT_HTML401,$encoding);
+    }
+
+    protected static function escapeArr($arr){
+        $new_arr = [];
+        foreach($arr as $key => $val){
+            $new_arr[$key] = self::escapeInput($val);
+        }
+        return $new_arr;
+    }
+
+    public static function redirect($url = "/", $statusCode = 303)
+    {
+       header('Location: ' . $url, true, $statusCode);
+       die();
+    }
 }
 ?>

@@ -11,7 +11,7 @@ ini_set('session.cookie_lifetime', 60 * 60 * 24 * 7);
 session_start();
 
 define('VIEW_PREFIX', '../app/views/');
-define('HTML_ASSET_PREFIX', 'assets/');
+define('HTML_ASSET_PREFIX', "/assets/");
 
 Config::load();
 BaseController::setViews([
@@ -19,6 +19,10 @@ BaseController::setViews([
         'view' => VIEW_PREFIX . 'home.php',
         'css' => HTML_ASSET_PREFIX . 'css/app/home.css',
         'js' => HTML_ASSET_PREFIX . 'css/app/home.js',
+    ],
+    'add-submission' => [
+        'view' => VIEW_PREFIX . 'add-submission.php',
+        'css' => HTML_ASSET_PREFIX . 'css/app/add-submission.css',
     ],
     'signup' => VIEW_PREFIX . 'signup.php'
 ]);

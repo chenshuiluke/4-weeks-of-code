@@ -8,8 +8,8 @@ class Router
     public static function configure(){
         self::$routes = [
             new Route('/', "App\Controllers\HomeController::index", 'GET'),
-            new Route('/signup', "App\Controllers\SignupController::showSignupPage", 'GET'),
-            new Route('/signup/process', "App\Controllers\SignupController::processSignup", 'POST')
+            new Route('/submissions/form', "App\Controllers\SubmissionController::index", 'GET'),
+            new Route('/submissions/add', "App\Controllers\SubmissionController::add", 'POST'),
         ];
     }
 

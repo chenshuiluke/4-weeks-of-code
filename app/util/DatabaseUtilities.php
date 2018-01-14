@@ -20,6 +20,7 @@ class DatabaseUtilities
         $dsn = "mysql:host=$host;dbname=$database;charset=$charset";
         $instance = new \PDO($dsn, $username, $password);
         $instance->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        $instance->setAttribute(\PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
         return $instance;
     }
 }

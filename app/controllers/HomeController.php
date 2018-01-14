@@ -31,10 +31,10 @@ class HomeController extends BaseController
             $gitHub->requestAccessToken($_GET['code']);
             $user = json_decode($gitHub->request('user'), true);
             // var_dump($user);
-            $email = $user['email'];
-            $name = $user['name'];
-            $username = $user['login'];
-            $avatar = $user['avatar_url'];
+            $email = self::escapeInput($user['email']);
+            $name = self::escapeInput($user['name']);
+            $username = self::escapeInput($user['login']);
+            $avatar = self::escapeInput($user['avatar_url']);
             // echo 'The first email on your github account is ' . $email;
             // echo '<br/>';
             // echo 'Your name is ' . $name;
@@ -43,7 +43,7 @@ class HomeController extends BaseController
             // var_dump($username);
             $user = null;
             if(!User::checkIfExists($username)){
-                $user = User::new($username, $email, $avatar, true);
+                $user = User::newInDB($username, $email, $avatar);
             }
             else{
                 $user = User::find($username);
@@ -52,7 +52,7 @@ class HomeController extends BaseController
             if(isset($user)){
                 $_SESSION['user'] = $user;
             }            
-            self::include_view('home');
+            return self::redirect();
             
         } elseif (!empty($_GET['go']) && $_GET['go'] === 'go') {
             $url = $gitHub->getAuthorizationUri();

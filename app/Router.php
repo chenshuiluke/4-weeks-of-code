@@ -1,6 +1,7 @@
 <?php
 namespace App;
 use App\Route;
+use App\Controllers\BaseController;
 class Router
 {
     private static $routes;
@@ -10,6 +11,7 @@ class Router
             new Route('/', "App\Controllers\HomeController::index", 'GET'),
             new Route('/submissions/form', "App\Controllers\SubmissionController::index", 'GET'),
             new Route('/submissions/add', "App\Controllers\SubmissionController::add", 'POST'),
+            new Route('/logout', "App\Controllers\HomeController::logout", 'GET'),
         ];
     }
 
@@ -28,9 +30,10 @@ class Router
         foreach(self::$routes as $route){
             $path = self::getPath();
             if($route->match($path, self::getRequestType())){
-                $route->process();
+                return $route->process();
             }
         }
+        return BaseController::redirect();
     }
 }
 

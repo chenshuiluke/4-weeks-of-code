@@ -4,7 +4,7 @@
         foreach($_SESSION['submissions'] as $submission){
     ?>
 
-            <div class="card" style="width: 18rem;">
+            <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
             <?php
                 if(null !== $submission->get('picture')){
             ?>            
@@ -15,7 +15,7 @@
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $submission->get('name') ?></h5>
                     <p class="card-text"><?php echo $submission->get('description') ?></p>
-                    <a href="#" class="btn btn-primary">View</a>
+                    <a href="#" class="btn btn-light">View</a>
                 </div>
             </div>    
     <?php        

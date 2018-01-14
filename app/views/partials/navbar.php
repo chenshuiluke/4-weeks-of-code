@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light navbar-expand-lg">
+<nav class="navbar navbar-dark bg-primary navbar-expand-lg">
   <a class="navbar-brand" href="/">4 Weeks of Code</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -20,11 +20,23 @@
     }
     if(isset($_SESSION['user'])){
 ?>
+      <li class="nav-item dropdown">
+        <span class="two-column" >
+          <img class="img img-fluid" src="<?php echo $_SESSION['user']->get('avatar') ?>">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <?php echo $_SESSION['user']->get('username'); ?>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">View Profile</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/logout">Logout</a>
+        </div>
+        </span>
+
+      </li>
+
       <li class="nav-item two-column">
-        <img class="img img-fluid" src="<?php echo $_SESSION['user']->get('avatar') ?>">
-        <a class="nav-link" href="/">
-          <?php echo $_SESSION['user']->get('username'); ?>
-        </a>
+
       </li>
 <?php
       

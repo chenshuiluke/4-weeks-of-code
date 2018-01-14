@@ -3,10 +3,11 @@
     display:block;
 }
 
-#add-submission{
+#add-submission, #login-button{
     position: fixed;
     bottom: 10px;
     right: 10px;
+    z-index: 999;
 }
 
 #submissions{
@@ -16,4 +17,15 @@
 
 #submissions-heading{
     text-align: center;
+}
+
+@media (max-width: 800px){
+    #add-submission, #login-button{
+        position: static;
+        bottom: unset;
+        right: unset;
+        z-index: unset;
+        display: block; 
+        margin:0px auto;
+    }
 }

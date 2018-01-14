@@ -66,5 +66,10 @@ class HomeController extends BaseController
         }
         
     }
+
+    public static function logout(){
+        session_destroy();
+        return self::redirect();
+    }
 }
 ?>

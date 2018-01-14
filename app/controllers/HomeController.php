@@ -5,6 +5,7 @@ use \App\Views\HomeView;
 use App\Util\DatabaseUtilities;
 use App\Config;
 use App\Models\User;
+use App\Models\Submission;
 use OAuth\OAuth2\Service\GitHub;
 use OAuth\Common\Storage\Session;
 use OAuth\Common\Consumer\Credentials;
@@ -12,6 +13,8 @@ use OAuth\Common\Consumer\Credentials;
 class HomeController extends BaseController
 {
     public static function index(){
+        $_SESSION['submissions'] = Submission::all();
+        // var_dump($_SESSION['submissions']);
         $uriFactory = new \OAuth\Common\Http\Uri\UriFactory();
         $currentUri = $uriFactory->createFromSuperGlobalArray($_SERVER);
         $currentUri->setQuery('');

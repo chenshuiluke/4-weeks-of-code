@@ -8,3 +8,12 @@
     bottom: 10px;
     right: 10px;
 }
+
+#submissions{
+    max-width: 18rem;
+    margin:0px auto;
+}
+
+#submissions-heading{
+    text-align: center;
+}

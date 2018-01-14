@@ -57,7 +57,7 @@ class Submission extends Model
 
         if($result){
             $submission_obj = $statement->fetch(\PDO::FETCH_ASSOC);
-            var_dump($submission_obj);
+            //var_dump($submission_obj);
             if($submission_obj){
                 return new Submission($submission_obj['name'], $submission_obj['description'], 
                 $submission_obj['picture'], $submission_obj['demo'], $submission_obj['code'], $submission_obj['user_id']);

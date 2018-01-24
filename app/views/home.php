@@ -1,4 +1,3 @@
-<img id="logo-image" class="img img-fluid" src="/assets/img/logo.png">
 <?php
     if(isset($_SESSION['submissions']) && count($_SESSION['submissions']) > 0){
         require VIEW_PREFIX . '/partials/home/submissions.php';

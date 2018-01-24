@@ -3,6 +3,7 @@
 <link rel="stylesheet" href="/assets/css/buttons.css">
 <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
 <link rel="stylesheet" href="/assets/css/app/navbar.css">
+<link rel="stylesheet" href="/assets/css/app/styles.css">
 
 <script src="/assets/js/jquery-3.2.1.min.js"></script>
 <script src="/assets/js/bootstrap.min.js"></script>

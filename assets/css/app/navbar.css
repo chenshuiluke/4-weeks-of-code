@@ -1,21 +1,31 @@
-.two-column {
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-direction: row;
-    flex-direction: row;
-    align-items: center;
-}
-
-nav img {
-    max-width: 24px !important;
-    max-height: 24px !important;
-    object-fit: cover;
-}
-
 .navbar-nav .dropdown-menu{
     position: absolute;
 }
 
-.nav-link{
-    color: rgba(255,255,255, 1) !important;
+nav{
+    background-color: #ff6f3c !important;
+}
+nav *{
+    color: white !important;
+}
+
+@font-face{
+    src: url('/assets/fonts/Bebas.ttf');
+    font-family: 'Bebas';
+}
+@font-face{
+    src: url('/assets/fonts/Montserrat.ttf');
+    font-family: 'Montserrat';
+}
+
+#nav-header{
+    font-family: Bebas;
+    text-align: center;
+    margin: auto;
+}
+#nav-profile{
+    font-family: Montserrat;
+    text-align: center;
+    margin: auto;    
+    display:block;
 }

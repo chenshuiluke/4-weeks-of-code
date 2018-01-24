@@ -15,8 +15,41 @@
     margin:0px auto;
 }
 
+#submissions .card{
+    background-color: #49beb7;
+}
+
 #submissions-heading{
+    margin-top: 10px;
     text-align: center;
+    color: white;
+    font-family: Bebas;
+}
+
+.dropdown-item{
+    color: black !important;
+}
+
+.card-title{
+    color: rgb(33, 37, 41);
+}
+
+.card-text{
+    color: white;
+}
+
+.btn-pink{
+    background-color: #f54d42;
+    color: #f6f6f6;
+}
+.btn-pink:hover{
+    color: white;
+}
+
+#login-button{
+    background-image: linear-gradient(rgb(175, 226, 77), #17b978);
+    border-radius: 0px;
+    border-bottom-width: 0px;
 }
 
 @media (max-width: 800px){

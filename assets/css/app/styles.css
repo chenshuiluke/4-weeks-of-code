@@ -1,0 +1,12 @@
+body{
+    background-color: #155263;
+}
+
+@font-face{
+    src: url('/assets/fonts/Bebas.ttf');
+    font-family: 'Bebas';
+}
+@font-face{
+    src: url('/assets/fonts/Montserrat.ttf');
+    font-family: 'Montserrat';
+}

@@ -1,5 +1,5 @@
 <nav>
-<h1 id="nav-header">Code Everyday</h1>
+<h1 id="nav-header"><a href="/">Code Streaks</a></h1>
 <?php
     if(isset($data) && isset($data['github_login_url']) && !isset($_SESSION['user'])){
 ?>

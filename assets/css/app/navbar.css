@@ -28,4 +28,8 @@ nav *{
     text-align: center;
     margin: auto;    
     display:block;
+    font-weight: bold;
+}
+#nav-profile:hover{
+    text-decoration: underline;
 }

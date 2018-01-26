@@ -16,7 +16,12 @@
 }
 
 #submissions .card{
-    background-color: #49beb7;
+    background-color: white;
+}
+
+.card img{
+    max-height: 200px;
+    object-fit: cover;
 }
 
 #submissions-heading{
@@ -35,7 +40,7 @@
 }
 
 .card-text{
-    color: white;
+    color: rgb(33, 37, 41);
 }
 
 .btn-pink{
@@ -46,10 +51,10 @@
     color: white;
 }
 
-#login-button{
+#login-button, #add-submission{
     background-image: linear-gradient(rgb(175, 226, 77), #17b978);
     border-radius: 0px;
-    border-bottom-width: 0px;
+    border-width: 0px;
 }
 
 @media (max-width: 800px){

@@ -78,6 +78,21 @@ class Submission extends Model
         return $result;
     }
 
+    public function save(){
+        $pdo = DatabaseUtilities::getPDOInstance();
+        $statement = $pdo->prepare('UPDATE submission SET name=:name, 
+            description=:description, picture=:picture, demo=:demo, code=:code WHERE id=:id');
+        $result = $statement->execute([
+            ':name' => $this->get('name'),
+            ':description' => $this->get('description'),
+            ':picture' => $this->get('picture'),
+            ':demo' => $this->get('demo'),
+            ':code' => $this->get('code'),
+            ':id' => $this->get('id')
+            ]);
+        return $result;
+    }
+
     public static function findById($id){
         $pdo = DatabaseUtilities::getPDOInstance();
         $statement = $pdo->prepare('SELECT * FROM submission WHERE id=:id');

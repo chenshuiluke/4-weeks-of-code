@@ -15,7 +15,9 @@ class Router
             new Route('/submission/view', "App\Controllers\SubmissionController::view", 'GET'),
             new Route('/submission/delete', "App\Controllers\SubmissionController::delete", 'POST'),
             new Route('/not_found', "App\Controllers\BaseController::notFound", 'GET'),
-            new Route('/unauthorized', "App\Controllers\BaseController::unauthorized", 'GET')
+            new Route('/unauthorized', "App\Controllers\BaseController::unauthorized", 'GET'),
+            new Route('/submission/edit/form', "App\Controllers\SubmissionController::showEditForm", 'GET'),
+            new Route('/submission/edit', "App\Controllers\SubmissionController::edit", 'POST'),
         ];
     }
 

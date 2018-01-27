@@ -14,8 +14,9 @@
               <i class="fa fa-trash" aria-hidden="true"></i>
             </button>
           </form>
-          <form>
-            <button action="/submission/edit/form" method="GET" class="btn btn-success">
+          <form action="/submission/edit/form" method="GET">
+            <button class="btn btn-success">
+              <input name="id" hidden value="<?php echo $_SESSION['submission']->get('id') ?>">
               <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
             </button>    
           </form>

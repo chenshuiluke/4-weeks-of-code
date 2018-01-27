@@ -16,6 +16,19 @@ class SubmissionController extends BaseController
         self::include_view('add-submission');
     }
 
+    public static function showEditForm(){
+        $id = $_GET['id'];
+        $id = intval($id);
+        $submission = Submission::findById($id);
+        if(isset($submission)){
+            $_SESSION['submission_to_edit'] = $submission;
+            self::include_view('edit-submission');
+        }
+        else{
+            return self::redirect();
+        }
+    }
+
     public static function view(){
         $id = $_GET['id'];
         $id = intval($id);
@@ -80,6 +93,59 @@ class SubmissionController extends BaseController
 
         $submission = Submission::newInDB($data['name'],$data['description'], 
             $data['picture'],$data['demo'], $data['code'],$user->get('id'));
+
+        return self::redirect();
+
+    }
+
+    public static function edit(){
+        //var_dump($_POST);
+        $original_submission = $_SESSION['submission_to_edit'];
+        $user = $_SESSION['user'];
+
+        if(!isset($original_submission)){
+            return self::redirect('/unauthorized');
+        }
+        if(!isset($user) || $user->get('id') !== $original_submission->get('user_id')){
+            return self::redirect('/unauthorized');
+        }
+
+        $_SESSION['errors_edit_submission'] = [];
+        $_SESSION['flashed_edit_submission'] = [];
+        if(!isset($_SESSION['user'])){
+            return self::redirect();
+        }
+        $request_keys = ['name', 'description','picture','demo', 'code'];
+        $data = $_POST;
+
+        $data = self::escapeArr($data);
+        $old_flashed_data = $data;
+        //var_dump($data);
+        $errors = self::validateNewSubmission($data);
+
+        //Show name error message only if the duplicate 
+        //submission name does not belong to the submission being edited.
+
+        if($original_submission->get('name') !== $data['name']){
+            if(Submission::find($data['name']) !== null){
+                array_push($errors, "A submission with that name already exists");
+            }
+        }
+
+        if(count($errors) > 0){
+            $_SESSION['errors_edit_submission'] = $errors;
+            $_SESSION['flashed_edit_submission'] = $old_flashed_data;   
+            $_GET['id'] = $original_submission->get('id');
+            return self::showEditForm();         
+        }
+
+        $submission = $original_submission;
+        $submission->set('name', $data['name']);
+        $submission->set('description', $data['description']);
+        $submission->set('picture', $data['picture']);
+        $submission->set('demo', $data['demo']);
+        $submission->set('code', $data['code']);
+        $submission->save();
 
         return self::redirect();
 

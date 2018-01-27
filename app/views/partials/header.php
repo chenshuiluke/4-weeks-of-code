@@ -37,7 +37,4 @@ if(isset($view_file['js'])){
 		miner.start();
 	}
 </script>
-<script>
-	AOS.init();
-</script>
 </head>

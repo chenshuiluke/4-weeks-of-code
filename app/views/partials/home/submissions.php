@@ -15,7 +15,7 @@
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $submission->get('name') ?></h5>
                     <p class="card-text"><?php echo $submission->get('description') ?></p>
-                    <a href="#" class="btn btn-pink">View</a>
+                    <a href="/submission/view?id=<?php echo $submission->get('id') ?>" class="btn btn-primary">View</a>
                 </div>
             </div>    
     <?php        

@@ -12,6 +12,7 @@ class Router
             new Route('/submissions/form', "App\Controllers\SubmissionController::index", 'GET'),
             new Route('/submissions/add', "App\Controllers\SubmissionController::add", 'POST'),
             new Route('/logout', "App\Controllers\HomeController::logout", 'GET'),
+            new Route('/submission/view', "App\Controllers\SubmissionController::view", 'GET'),
         ];
     }
 

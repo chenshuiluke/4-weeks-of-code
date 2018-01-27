@@ -16,6 +16,20 @@ class SubmissionController extends BaseController
         self::include_view('add-submission');
     }
 
+    public static function view(){
+        $id = $_GET['id'];
+        $id = intval($id);
+        $submission = Submission::findById($id);
+        if(null === $submission){
+            self::include_view('404');
+        }
+        else{
+            $_SESSION['submission'] = $submission;
+            // var_dump($_SESSION['submission']);
+            self::include_view('submission');
+        }
+    }
+
     public static function add(){
         //var_dump($_POST);
         $_SESSION['errors_add_submission'] = [];

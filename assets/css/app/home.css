@@ -43,14 +43,6 @@
     color: rgb(33, 37, 41);
 }
 
-.btn-pink{
-    background-color: #f54d42;
-    color: #f6f6f6;
-}
-.btn-pink:hover{
-    color: white;
-}
-
 #login-button, #add-submission{
     background-image: linear-gradient(rgb(175, 226, 77), #17b978);
     border-radius: 0px;

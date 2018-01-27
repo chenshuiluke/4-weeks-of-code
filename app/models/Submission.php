@@ -6,7 +6,8 @@ use App\Util\DatabaseUtilities;
 
 class Submission extends Model
 {
-    public function __construct($name, $description, $picture, $demo, $code, $user_id){
+    public function __construct($id, $name, $description, $picture, $demo, $code, $user_id){
+        $this->set('id', $id);
         $this->set('name', $name);
         $this->set('description', $description);
         $this->set('picture', $picture);
@@ -23,7 +24,7 @@ class Submission extends Model
         $result = $statement->execute();
         if($result){
             while($row = $statement->fetch(\PDO::FETCH_ASSOC)){
-                $submission = new Submission($row['name'], $row['description'], $row['picture'], 
+                $submission = new Submission($row['id'], $row['name'], $row['description'], $row['picture'], 
                     $row['demo'], $row['code'], $row['user_id']);
                 array_push($submissions, $submission);
             }
@@ -59,7 +60,25 @@ class Submission extends Model
             $submission_obj = $statement->fetch(\PDO::FETCH_ASSOC);
             //var_dump($submission_obj);
             if($submission_obj){
-                return new Submission($submission_obj['name'], $submission_obj['description'], 
+                return new Submission($submission_obj['id'], $submission_obj['name'], $submission_obj['description'], 
+                $submission_obj['picture'], $submission_obj['demo'], $submission_obj['code'], $submission_obj['user_id']);
+            }
+            return null;
+        }
+        return null;
+    }
+
+    public static function findById($id){
+        $pdo = DatabaseUtilities::getPDOInstance();
+        $statement = $pdo->prepare('SELECT * FROM submission WHERE id=:id');
+        $statement->bindParam(':id', $id);
+        $result = $statement->execute();
+
+        if($result){
+            $submission_obj = $statement->fetch(\PDO::FETCH_ASSOC);
+            //var_dump($submission_obj);
+            if($submission_obj){
+                return new Submission($submission_obj['id'], $submission_obj['name'], $submission_obj['description'], 
                 $submission_obj['picture'], $submission_obj['demo'], $submission_obj['code'], $submission_obj['user_id']);
             }
             return null;

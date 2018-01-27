@@ -10,3 +10,17 @@ body{
     src: url('/assets/fonts/Montserrat.ttf');
     font-family: 'Montserrat';
 }
+
+.btn-orange{
+    background-color: #f54d42;
+    color: #f6f6f6;
+}
+.btn-orange:hover{
+    color: white;
+}
+.centered{
+    margin: 0px auto;
+    display: block;
+    text-align: center;
+    padding: 10px;
+}

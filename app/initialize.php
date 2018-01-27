@@ -24,7 +24,11 @@ BaseController::setViews([
         'view' => VIEW_PREFIX . 'add-submission.php',
         'css' => HTML_ASSET_PREFIX . 'css/app/add-submission.css',
     ],
-    'signup' => VIEW_PREFIX . 'signup.php'
+    'signup' => VIEW_PREFIX . 'signup.php',
+    'submission' => [
+        'view' => VIEW_PREFIX . 'submission_item.php',
+        'css' => HTML_ASSET_PREFIX . 'css/app/submission_item.css',
+    ]
 ]);
 
 Router::configure();

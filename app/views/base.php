@@ -8,4 +8,7 @@
     require $view_file['view'];
 ?>
     </<?php echo "{$view}" ?>>
+    <script>
+	    AOS.init();
+    </script>
 </body>

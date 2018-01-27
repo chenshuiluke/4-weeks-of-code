@@ -1,10 +1,12 @@
 <div id="submissions">
     <h2 id="submissions-heading">Submissions</h2>
     <?php
-        foreach($_SESSION['submissions'] as $submission){
+        foreach($_SESSION['submissions'] as $key => $submission){
     ?>
-
-            <div class="card mb-3" style="max-width: 18rem;">
+            <?php
+                $animation = $key % 2 === 0 ? 'fade-up-right' : 'fade-up-left';
+            ?>
+            <div class="card mb-3" data-aos="<?php echo $animation ?>" style="max-width: 18rem;">
             <?php
                 if(null !== $submission->get('picture')){
             ?>            

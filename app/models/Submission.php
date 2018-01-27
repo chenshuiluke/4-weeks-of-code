@@ -19,7 +19,7 @@ class Submission extends Model
     public static function all(){
         $submissions = [];
         $pdo = DatabaseUtilities::getPDOInstance();
-        $statement = $pdo->prepare('SELECT * FROM submission;');
+        $statement = $pdo->prepare('SELECT * FROM submission ORDER BY id DESC;');
 
         $result = $statement->execute();
         if($result){

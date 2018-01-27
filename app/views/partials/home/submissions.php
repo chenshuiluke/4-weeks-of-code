@@ -1,5 +1,5 @@
 <div id="submissions">
-    <h2 id="submissions-heading">Submissions</h2>
+    <h2 id="submissions-heading">Most Recent Submissions</h2>
     <?php
         foreach($_SESSION['submissions'] as $key => $submission){
     ?>

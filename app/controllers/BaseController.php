@@ -30,5 +30,13 @@ class BaseController
        header('Location: ' . $url, true, $statusCode);
        die();
     }
+
+    public static function notFound(){
+        self::include_view('not_found');
+    }
+
+    public static function unauthorized(){
+        self::include_view('unauthorized');
+    }    
 }
 ?>

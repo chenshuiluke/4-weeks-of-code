@@ -28,6 +28,12 @@ BaseController::setViews([
     'submission' => [
         'view' => VIEW_PREFIX . 'submission_item.php',
         'css' => HTML_ASSET_PREFIX . 'css/app/submission_item.css',
+    ],
+    'not_found' => [
+        'view' => VIEW_PREFIX . 'not_found.php',
+    ],
+    'unauthorized' => [
+        'view' => VIEW_PREFIX . 'unauthorized.php',
     ]
 ]);
 

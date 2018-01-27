@@ -13,6 +13,9 @@ class Router
             new Route('/submissions/add', "App\Controllers\SubmissionController::add", 'POST'),
             new Route('/logout', "App\Controllers\HomeController::logout", 'GET'),
             new Route('/submission/view', "App\Controllers\SubmissionController::view", 'GET'),
+            new Route('/submission/delete', "App\Controllers\SubmissionController::delete", 'POST'),
+            new Route('/not_found', "App\Controllers\BaseController::notFound", 'GET'),
+            new Route('/unauthorized', "App\Controllers\BaseController::unauthorized", 'GET')
         ];
     }
 
@@ -34,7 +37,7 @@ class Router
                 return $route->process();
             }
         }
-        return BaseController::redirect();
+        return BaseController::redirect('/not_found');
     }
 }
 

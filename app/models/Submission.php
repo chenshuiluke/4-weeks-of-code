@@ -68,6 +68,16 @@ class Submission extends Model
         return null;
     }
 
+    public function delete(){
+        $pdo = DatabaseUtilities::getPDOInstance();
+        $statement = $pdo->prepare('DELETE FROM submission WHERE id=:id');
+        $id = $this->get('id');
+        $statement->bindParam(':id', $id);
+        
+        $result = $statement->execute();
+        return $result;
+    }
+
     public static function findById($id){
         $pdo = DatabaseUtilities::getPDOInstance();
         $statement = $pdo->prepare('SELECT * FROM submission WHERE id=:id');

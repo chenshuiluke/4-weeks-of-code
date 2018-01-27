@@ -30,6 +30,26 @@ class SubmissionController extends BaseController
         }
     }
 
+    public static function delete(){
+        $id = $_POST['id'];
+        $id = intval($id);
+        if(isset($_SESSION['user'])){
+            $user = $_SESSION['user'];
+            $submission = Submission::findById($id);
+            if($submission->get('user_id') === $user->get('id')){
+                $submission->delete();
+            }
+            else{
+                return self::redirect('/unauthorized');
+            }
+            return self::redirect();
+        }
+        else{
+            return self::redirect('/unauthorized');
+        }
+        
+    }
+
     public static function add(){
         //var_dump($_POST);
         $_SESSION['errors_add_submission'] = [];

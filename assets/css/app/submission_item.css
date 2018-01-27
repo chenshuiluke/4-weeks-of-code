@@ -6,3 +6,7 @@ submission img{
 .card{
     border-radius: 0px;
 }
+
+submission form{
+    display: inline-block;
+}

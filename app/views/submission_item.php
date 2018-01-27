@@ -8,12 +8,17 @@
       if(isset($_SESSION['user']) && $_SESSION['submission']->get('user_id') === $_SESSION['user']->get('id')){
     ?>
         <div class="centered">
-          <a href="#" class="btn btn-orange">
-            <i class="fa fa-trash" aria-hidden="true"></i>
-          </a>
-          <a href="#" class="btn btn-success">
-            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-          </a>          
+          <form action="/submission/delete" method="POST">
+            <input name="id" hidden value="<?php echo $_SESSION['submission']->get('id') ?>">
+            <button type="submit" class="btn btn-orange">
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            </button>
+          </form>
+          <form>
+            <button action="/submission/edit/form" method="GET" class="btn btn-success">
+              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+            </button>    
+          </form>
         </div>
     <?php
       }

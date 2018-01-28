@@ -24,7 +24,17 @@ body{
     text-align: center;
     padding: 10px;
 }
-.parallax-window{
-    min-height: 400px;
-    background: transparent;
+.montserrat{
+    font-family: Montserrat;
+}
+.bebas{
+    font-family: Bebas;
+}
+
+.white{
+    color: white;
+}
+
+.bold{
+    font-weight: bold;
 }

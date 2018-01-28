@@ -40,6 +40,9 @@ BaseController::setViews([
     ],
     'unauthorized' => [
         'view' => VIEW_PREFIX . 'unauthorized.php',
+    ],
+    'about' => [
+        'view' => VIEW_PREFIX . 'about.php',
     ]
 ]);
 

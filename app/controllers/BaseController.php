@@ -38,5 +38,9 @@ class BaseController
     public static function unauthorized(){
         self::include_view('unauthorized');
     }    
+
+    public static function about(){
+        self::include_view('about');
+    }
 }
 ?>

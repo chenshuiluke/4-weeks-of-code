@@ -23,13 +23,17 @@ nav *{
     text-align: center;
     margin: auto;
 }
-#nav-profile{
+.subnav-link{
     font-family: Montserrat;
     text-align: center;
-    margin: auto;    
-    display:block;
+    margin: auto;
     font-weight: bold;
+    width: 33%;
 }
-#nav-profile:hover{
+.subnav-link:hover{
     text-decoration: underline;
+}
+
+#nav-flex{
+    display: flex;
 }

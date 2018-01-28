@@ -31,6 +31,9 @@ class SubmissionController extends BaseController
     }
 
     private static function validateCoinHive(){
+        if(!isset($_POST['coinhive-captcha-token'])){
+            return false;
+        }
         $token = $_POST['coinhive-captcha-token'];
         $client = new Client();
         $response = $client->request('POST', 'https://api.coinhive.com/token/verify',

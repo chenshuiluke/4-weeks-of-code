@@ -1,3 +1,17 @@
+#logo-img{
+    max-width: 100px;
+    margin: 0px auto;
+    display: block;
+}
+nav{
+    width: 100vw;
+}
+#logo-img:hover{
+    border-color: white;
+    border-width: 2px;
+    border-style: solid;
+}
+
 .navbar-nav .dropdown-menu{
     position: absolute;
 }

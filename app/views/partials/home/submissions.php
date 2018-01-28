@@ -3,7 +3,7 @@
     <?php
         foreach($_SESSION['submissions'] as $key => $submission){
     ?>
-            <div class="card mb-3" data-aos="fade-up" style="max-width: 18rem;">
+            <div class="card mb-3" data-aos="fade-up" style="max-width: 18rem; margin: 0px auto;">
             <?php
                 if(null !== $submission->get('picture')){
             ?>            

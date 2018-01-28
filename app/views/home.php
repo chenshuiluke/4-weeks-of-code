@@ -1,8 +1,19 @@
-<?php
-    if(isset($_SESSION['submissions']) && count($_SESSION['submissions']) > 0){
-        require VIEW_PREFIX . '/partials/home/submissions.php';
-    }
-?>
+<div class="row">
+    <div class="col-md-4">
+        
+    </div>
+    <div class="col-md-4">
+        <br />
+        <?php
+            if(isset($_SESSION['submissions']) && count($_SESSION['submissions']) > 0){
+                require VIEW_PREFIX . '/partials/home/submissions.php';
+            }
+        ?>
+    </div>
+    <div class="col-md-4">
+    </div>
+</div>
+
 <?php 
     if(isset($_SESSION['user'])){
 ?>

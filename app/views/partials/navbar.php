@@ -1,5 +1,6 @@
 <nav>
-<h1 id="nav-header"><a href="/">Code Every Day</a></h1>
+<a href="/"><img id="logo-img" class="img img-fluid" src="/assets/img/logo.png"></a>
+<br/>
 <div id="nav-flex">
 <?php
     if(!isset($data)){

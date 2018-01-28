@@ -24,3 +24,7 @@ body{
     text-align: center;
     padding: 10px;
 }
+.parallax-window{
+    min-height: 400px;
+    background: transparent;
+}

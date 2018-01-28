@@ -4,7 +4,8 @@
     "type": "project",
     "require": {
         "lusitanian/oauth": "^0.8.10",
-        "vlucas/phpdotenv": "^2.4"
+        "vlucas/phpdotenv": "^2.4",
+        "guzzlehttp/guzzle": "~6.0"
     },
     "authors": [
         {

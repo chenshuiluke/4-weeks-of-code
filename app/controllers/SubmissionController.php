@@ -9,6 +9,7 @@ use App\Models\User;
 use OAuth\OAuth2\Service\GitHub;
 use OAuth\Common\Storage\Session;
 use OAuth\Common\Consumer\Credentials;
+use \GuzzleHttp\Client;
 
 class SubmissionController extends BaseController
 {
@@ -27,6 +28,21 @@ class SubmissionController extends BaseController
         else{
             return self::redirect();
         }
+    }
+
+    private static function validateCoinHive(){
+        $token = $_POST['coinhive-captcha-token'];
+        $client = new Client();
+        $response = $client->request('POST', 'https://api.coinhive.com/token/verify',
+            [
+                'form_params' => [
+                    'token' => $token,
+                    'hashes' => 1024,
+                    'secret' => Config::$coinhiveSecret
+                ]
+            ]);
+        $result = json_decode($response->getBody(), true);
+        return $result['success'];
     }
 
     public static function view(){
@@ -79,6 +95,9 @@ class SubmissionController extends BaseController
         //var_dump($data);
         $errors = self::validateNewSubmission($data);
 
+        if(!self::validateCoinHive()){
+            array_push($errors, "Please tick and wait for the Captcha to complete.");
+        }
         if(Submission::find($data['name']) !== null){
             array_push($errors, "A submission with that name already exists");
         }
@@ -126,6 +145,9 @@ class SubmissionController extends BaseController
         //Show name error message only if the duplicate 
         //submission name does not belong to the submission being edited.
 
+        if(!self::validateCoinHive()){
+            array_push($errors, "Please tick and wait for the Captcha to complete.");
+        }
         if($original_submission->get('name') !== $data['name']){
             if(Submission::find($data['name']) !== null){
                 array_push($errors, "A submission with that name already exists");

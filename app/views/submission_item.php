@@ -2,7 +2,13 @@
 <div class="card">
 
   <div class="card-body">
-    <img class="img img-fluid" src="<?php echo $_SESSION['submission']->get('picture');?> " alt="Card image cap">
+    <?php
+      if(null !== $_SESSION['submission']->get('picture')){
+    ?>
+        <img class="img img-fluid" src="<?php echo $_SESSION['submission']->get('picture');?> " alt="Card image cap">
+    <?php
+      }
+    ?>
 
     <?php 
       if(isset($_SESSION['user']) && $_SESSION['submission']->get('user_id') === $_SESSION['user']->get('id')){

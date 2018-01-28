@@ -3,10 +3,7 @@
     <?php
         foreach($_SESSION['submissions'] as $key => $submission){
     ?>
-            <?php
-                $animation = $key % 2 === 0 ? 'fade-up-right' : 'fade-up-left';
-            ?>
-            <div class="card mb-3" data-aos="<?php echo $animation ?>" style="max-width: 18rem;">
+            <div class="card mb-3" data-aos="fade-up" style="max-width: 18rem;">
             <?php
                 if(null !== $submission->get('picture')){
             ?>            

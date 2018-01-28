@@ -9,6 +9,7 @@
 <script src="/assets/js/jquery-3.2.1.min.js"></script>
 <script src="/assets/js/bootstrap.min.js"></script>
 <script src="/assets/js/aos.js"></script>
+<script src="/assets/js/parallax.min.js"></script>
 
 <?php
 if(isset($view_file['css'])){

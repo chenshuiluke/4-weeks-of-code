@@ -14,6 +14,8 @@ define('VIEW_PREFIX', '../app/views/');
 define('HTML_ASSET_PREFIX', "/assets/");
 
 Config::load();
+Config::test();
+
 BaseController::setViews([
     'home' => [
         'view' => VIEW_PREFIX . 'home.php',

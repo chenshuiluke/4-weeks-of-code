@@ -1,5 +1,5 @@
 <nav>
-<h1 id="nav-header"><a href="/">Code Streaks</a></h1>
+<h1 id="nav-header"><a href="/">Code Every Day</a></h1>
 <div id="nav-flex">
 <?php
     if(!isset($data)){

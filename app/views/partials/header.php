@@ -26,7 +26,7 @@ if(isset($view_file['js'])){
 }
 ?>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Code Streaks</title>
+<title>Code Every Day</title>
 
 <script src="https://authedmine.com/lib/authedmine.min.js"></script>
 <script>

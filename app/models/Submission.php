@@ -2,6 +2,7 @@
 namespace App\Models;
 
 use App\Models\Model;
+use App\Models\User;
 use App\Util\DatabaseUtilities;
 
 class Submission extends Model
@@ -31,6 +32,10 @@ class Submission extends Model
         }
         return $submissions;
 
+    }
+
+    public function user(){
+        return User::findById($this->get('user_id'));
     }
 
     public static function newInDB($name, $description, $picture, $demo, $code, $user_id){

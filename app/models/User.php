@@ -65,5 +65,26 @@ class User extends Model
         }
         return null;
     }
+
+    public static function findById($id){
+        $pdo = DatabaseUtilities::getPDOInstance();
+        $statement = $pdo->prepare("SELECT * FROM user WHERE id=:id");
+
+        $statement->bindParam(':id', $id);
+
+        $result = $statement->execute();
+
+        if($result){
+            $user_obj = $statement->fetch(\PDO::FETCH_ASSOC);
+            if($user_obj){
+                //var_dumpvar_dump($user_obj);
+                $user = new User($user_obj['username'], $user_obj['email'], $user_obj['avatar_url'], $user_obj['id']);
+                //var_dump($user);
+                return $user;
+            }
+            return null;
+        }
+        return null;
+    }    
 }
 ?>

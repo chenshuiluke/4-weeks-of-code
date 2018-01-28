@@ -46,6 +46,29 @@
     border-width: 0px;
 }
 
+.card, .btn{
+    border-radius: 0px;
+}
+
+.card img:hover{
+    transform: scale(1.5);
+    transition: transform 1s ease-in-out;
+}
+
+.card:hover{
+    box-shadow: 0px 0px 0px 2px rgba(234,234,234, 1);
+    border-width: 1px;
+    border-style: solid;
+    border-color: white;
+    transition: box-shadow 1s ease-in-out;
+}
+
+.btn.btn-primary:hover{
+    box-shadow: 0px 0px 0px 2px rgba(0,123,255, 1);
+}
+
+
+
 @media (max-width: 800px){
     #add-submission, #login-button{
         position: static;

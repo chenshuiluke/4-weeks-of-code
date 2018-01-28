@@ -10,3 +10,7 @@ submission img{
 submission form{
     display: inline-block;
 }
+
+submission .btn *{
+    color: white;
+}

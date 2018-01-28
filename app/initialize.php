@@ -43,6 +43,7 @@ BaseController::setViews([
     ],
     'about' => [
         'view' => VIEW_PREFIX . 'about.php',
+        'css' => HTML_ASSET_PREFIX . 'css/app/about.css',
     ]
 ]);
 

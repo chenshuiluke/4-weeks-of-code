@@ -44,7 +44,11 @@ BaseController::setViews([
     'about' => [
         'view' => VIEW_PREFIX . 'about.php',
         'css' => HTML_ASSET_PREFIX . 'css/app/about.css',
-    ]
+    ],
+    'user' => [
+        'view' => VIEW_PREFIX . 'user_profile.php',
+        'css' => HTML_ASSET_PREFIX . 'css/app/user_profile.css',
+    ],    
 ]);
 
 Router::configure();

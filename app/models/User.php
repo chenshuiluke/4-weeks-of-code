@@ -3,6 +3,7 @@ namespace App\Models;
 
 use App\Util\DatabaseUtilities;
 use App\Models\Model;
+use App\Models\Submission;
 class User extends Model
 {
     public function __construct($username, $email, $avatar, $id){
@@ -33,6 +34,22 @@ class User extends Model
         else{
             return false;
         }
+    }
+
+    public function submissions(){
+        $pdo = DatabaseUtilities::getPDOInstance();
+        $statement = $pdo->prepare("SELECT * FROM submission where user_id=:user_id");
+        $id = $this->get('id');
+        $statement->bindParam(':user_id', $id);
+
+        $result = $statement->execute();
+        $arr = [];
+        while($row = $statement->fetch(\PDO::FETCH_ASSOC)){
+            $submission = new Submission($row['id'], $row['name'], $row['description'], $row['picture'], 
+            $row['demo'], $row['code'], $row['user_id'], $row['date']);
+            array_push($arr, $submission);
+        }
+        return $arr;
     }
 
     public static function newInDB($username, $email, $avatar){

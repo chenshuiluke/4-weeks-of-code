@@ -19,6 +19,7 @@ class Router
             new Route('/submission/edit/form', "App\Controllers\SubmissionController::showEditForm", 'GET'),
             new Route('/submission/edit', "App\Controllers\SubmissionController::edit", 'POST'),
             new Route('/about', "App\Controllers\BaseController::about", 'GET'),
+            new Route('/user', "App\Controllers\UserController::view", 'GET'),
         ];
     }
 

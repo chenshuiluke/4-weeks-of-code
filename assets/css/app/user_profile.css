@@ -1,0 +1,27 @@
+.progress-indicator li *{
+    font-size: 16px;
+    color: #65D074;
+}
+
+.subdued{
+    font-size: 14px;
+    opacity: 0.6;
+}
+
+.progress-indicator.stacked .stacked-text{
+    margin-left: 52% !important;
+}
+
+#user-profile-img{
+    display: block;
+    margin: 10px auto;
+    max-width: 400px;
+    object-fit: cover;
+}
+
+#user-profile-username{
+    font-family: Bebas;
+    margin: 10px auto;
+    text-align: center;
+    color: white;
+}

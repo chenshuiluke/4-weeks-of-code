@@ -20,7 +20,13 @@
                     <?php 
                         if(isset($user)){
                     ?>
-                            <p class="text-right font-weight-light" style="width: 100%;"><small class="text-right font-weight-light">by <?php echo $user->get('username') ?></small></p>
+                            <p class="text-right font-weight-light" style="width: 100%;">
+                                <small class="text-right font-weight-light">by
+                                    <a href="/user?id=<?php echo $user->get('id') ?>">
+                                        <?php echo $user->get('username') ?>
+                                    </a>
+                                </small>
+                            </p>
                     <?php
                         }
                     ?>

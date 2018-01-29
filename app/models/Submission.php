@@ -7,7 +7,7 @@ use App\Util\DatabaseUtilities;
 
 class Submission extends Model
 {
-    public function __construct($id, $name, $description, $picture, $demo, $code, $user_id){
+    public function __construct($id, $name, $description, $picture, $demo, $code, $user_id, $date){
         $this->set('id', $id);
         $this->set('name', $name);
         $this->set('description', $description);
@@ -15,6 +15,7 @@ class Submission extends Model
         $this->set('demo', $demo);
         $this->set('code', $code);
         $this->set('user_id', $user_id);
+        $this->set('date', $date);
     }
 
     public static function all(){
@@ -26,7 +27,7 @@ class Submission extends Model
         if($result){
             while($row = $statement->fetch(\PDO::FETCH_ASSOC)){
                 $submission = new Submission($row['id'], $row['name'], $row['description'], $row['picture'], 
-                    $row['demo'], $row['code'], $row['user_id']);
+                    $row['demo'], $row['code'], $row['user_id'], $row['date']);
                 array_push($submissions, $submission);
             }
         }
@@ -38,10 +39,10 @@ class Submission extends Model
         return User::findById($this->get('user_id'));
     }
 
-    public static function newInDB($name, $description, $picture, $demo, $code, $user_id){
+    public static function newInDB($name, $description, $picture, $demo, $code, $user_id, $date){
         $pdo = DatabaseUtilities::getPDOInstance();
         $statement = $pdo->prepare('INSERT INTO submission (name, description, 
-        picture, demo, code, user_id) VALUES(:name, :description, :picture, :demo, :code,:user_id);');
+        picture, demo, code, user_id, date) VALUES(:name, :description, :picture, :demo, :code,:user_id, :date);');
 
         $result = $statement->execute([
             ':name' => $name,
@@ -49,7 +50,8 @@ class Submission extends Model
             ':picture' => $picture,
             ':demo' => $demo,
             ':code' => $code,
-            ':user_id' => $user_id
+            ':user_id' => $user_id,
+            ':date' => $date
             ]);
 
         return self::find($name);
@@ -66,12 +68,14 @@ class Submission extends Model
             //var_dump($submission_obj);
             if($submission_obj){
                 return new Submission($submission_obj['id'], $submission_obj['name'], $submission_obj['description'], 
-                $submission_obj['picture'], $submission_obj['demo'], $submission_obj['code'], $submission_obj['user_id']);
+                $submission_obj['picture'], $submission_obj['demo'], $submission_obj['code'], $submission_obj['user_id'], $submission_obj['date']);
             }
             return null;
         }
         return null;
     }
+
+    
 
     public function delete(){
         $pdo = DatabaseUtilities::getPDOInstance();
@@ -86,14 +90,15 @@ class Submission extends Model
     public function save(){
         $pdo = DatabaseUtilities::getPDOInstance();
         $statement = $pdo->prepare('UPDATE submission SET name=:name, 
-            description=:description, picture=:picture, demo=:demo, code=:code WHERE id=:id');
+            description=:description, picture=:picture, demo=:demo, code=:code, date=:date WHERE id=:id');
         $result = $statement->execute([
             ':name' => $this->get('name'),
             ':description' => $this->get('description'),
             ':picture' => $this->get('picture'),
             ':demo' => $this->get('demo'),
             ':code' => $this->get('code'),
-            ':id' => $this->get('id')
+            ':id' => $this->get('id'),
+            ':date' => $this->get('date')
             ]);
         return $result;
     }
@@ -109,7 +114,7 @@ class Submission extends Model
             //var_dump($submission_obj);
             if($submission_obj){
                 return new Submission($submission_obj['id'], $submission_obj['name'], $submission_obj['description'], 
-                $submission_obj['picture'], $submission_obj['demo'], $submission_obj['code'], $submission_obj['user_id']);
+                $submission_obj['picture'], $submission_obj['demo'], $submission_obj['code'], $submission_obj['user_id'], $submission_obj['date']);
             }
             return null;
         }

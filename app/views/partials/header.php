@@ -3,6 +3,7 @@
 <link rel="stylesheet" href="/assets/css/buttons.css">
 <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
 <link rel="stylesheet" href="/assets/css/aos.css">
+<link rel="stylesheet" href="/assets/css/progress-wizard.min.css">
 <link rel="stylesheet" href="/assets/css/app/navbar.css">
 <link rel="stylesheet" href="/assets/css/app/styles.css">
 

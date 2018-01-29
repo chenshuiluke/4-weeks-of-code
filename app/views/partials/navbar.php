@@ -21,7 +21,7 @@
     }
     if(isset($_SESSION['user'])){
 ?>
-        <a class="subnav-link">
+        <a class="subnav-link" href="/user?id=<?php echo $_SESSION['user']->get('id') ?>">
             <i class="fa fa-user-circle"></i>
             <span style="padding-left: 5px;"><?php echo $_SESSION['user']->get('username') ?></span>
         </a>

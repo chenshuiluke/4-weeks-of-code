@@ -6,21 +6,23 @@
 <h2 id="user-profile-username"><?php echo $user->get('username') ?></h2>
 <img class="img img-fluid" id="user-profile-img" src="<?php echo $user->get('avatar') ?>">
 
-<ol class="progress-indicator stepped stacked">
-<?php
-    foreach($submissions as $submission){
-?>
-        <li class="completed">
-            <span class="bubble"></span>
-            <a href="#">
-                <span class="stacked-text montserrat">
-                    <div> <?php echo $submission->get('name') ?> </div>
-                    <span class="fa fa-calendar"></span>
-                    <span class="subdued"><?php echo $submission->get("date"); ?></span>
-                </span>
+<div class="container">
+    <div class="list-group">
+        <a class="list-group-item"><h3>Submissions</h3></a>
+    <?php
+        foreach($submissions as $submission){
+    ?>
+            <a href="/submission/view?id=<?php echo $submission->get('id')?>" class="list-group-item">
+                <div class="media">
+                    <img class="mr-3" src="<?php echo $submission->get('picture') ?>" alt="Generic placeholder image">
+                    <div class="media-body">
+                        <h5 class="mt-0"><?php echo $submission->get('name') ?></h5>
+                        <p class="font-weight-light"><?php echo $submission->get("date"); ?></p>
+                    </div>
+                </div>
             </a>
-        </li>
-<?php      
-    }
-?>
-</ol>
+    <?php      
+        }
+    ?>
+    </div>
+</div>

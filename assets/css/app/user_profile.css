@@ -17,6 +17,17 @@
     margin: 10px auto;
     max-width: 400px;
     object-fit: cover;
+    width: 90%;
+    margin: auto;
+    background: #fff;
+    padding: 30px;
+    border-style: solid;
+    border-width: 15px;
+    border-top-color: lighten(#000, 20%);
+    border-right-color: lighten(#000, 0%);
+    border-bottom-color: lighten(#000, 20%);
+    border-left-color: lighten(#000, 0%);
+    box-shadow: 2px 2px 4px rgba(0,0,0,.6);
 }
 
 #user-profile-username{
@@ -24,4 +35,28 @@
     margin: 10px auto;
     text-align: center;
     color: white;
+}
+
+user .media img{
+    max-width: 200px;
+    object-fit: cover;
+
+    width: 90%;
+    margin: auto;
+    background: #fff;
+    padding: 3px;
+    border-style: solid;
+    border-width: 3px;
+    border-top-color: lighten(#000, 20%);
+    border-right-color: lighten(#000, 0%);
+    border-bottom-color: lighten(#000, 20%);
+    border-left-color: lighten(#000, 0%);
+    box-shadow: 2px 2px 4px rgba(0,0,0,.6);
+
+}
+
+@media(max-width: 500px){
+    user .media img{
+        max-width: 50%;
+    }
 }
